@@ -1,10 +1,10 @@
 from requests import Request, Session
 from requests.exceptions import ConnectionError, Timeout, TooManyRedirects
 import json
-url = 'https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest'
+url = 'https://pro-api.coinmarketcap.com/v1/key/info'
 parameters = {
           'start':'1',
-            'limit':'5000',
+            'limit':'1',
               'convert':'USD'
               }
 headers = {
@@ -13,9 +13,8 @@ headers = {
             }
 session = Session()
 session.headers.update(headers)
-try:
-    response = session.get(url, params=parameters)
-    data = json.loads(response.text)
-    print(data)
-except (ConnectionError, Timeout, TooManyRedirects) as e:
-    print(e)
+
+response = session.get(url, params=parameters)
+data = json.loads(response.text)
+print(data)
+
