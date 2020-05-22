@@ -25,7 +25,7 @@ print('-' * 100)
 
 # Get Fear & Greedy Index
 
-r3 =requests.get('https://api.alternative.me/fng/')
+r3 = requests.get('https://api.alternative.me/fng/')
 
 result3 = r3.json()
 
@@ -33,4 +33,8 @@ print(result3['name'])
 print(result3['data'][0]['value'])
 print(result3['data'][0]['value_classification'])
 print('-' * 100)
+
+
+
+
 
