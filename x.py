@@ -34,6 +34,12 @@ print(result3['data'][0]['value'])
 print(result3['data'][0]['value_classification'])
 print('-' * 100)
 
+# 不错的资源
+
+## 资源1：https://cryptodiffer.com/news/category/hot/
+## 资源2：https://www.coingecko.com/zh
+
+
 
 
 
