@@ -38,7 +38,11 @@ print('-' * 100)
 
 ## 资源1：https://cryptodiffer.com/news/category/hot/
 ## 资源2：https://www.coingecko.com/zh
-
+## 资源3：https://bc.cnvd.org.cn/ （区块链漏洞子库）
+## 资源4：https://grayscale.co/
+## 资源5：https://100trillionusd.github.io/index.html  （PlanB）
+## 资源6：https://www.lookintobitcoin.com/charts/  （很多比特币价格的图表）
+## 资源7：https://www.lookintobitcoin.com/charts/bitcoin-investor-tool/   （2year MA）
 
 
 
