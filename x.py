@@ -43,6 +43,8 @@ print('-' * 100)
 ## 资源5：https://100trillionusd.github.io/index.html  （PlanB）
 ## 资源6：https://www.lookintobitcoin.com/charts/  （很多比特币价格的图表）
 ## 资源7：https://www.lookintobitcoin.com/charts/bitcoin-investor-tool/   （2year MA）
+## 资源8：https://glassnode.com/
+## 资源9：https://coinmetrics.io/
 
 
 
