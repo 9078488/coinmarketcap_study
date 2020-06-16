@@ -45,8 +45,13 @@ print('-' * 100)
 ## 资源7：https://www.lookintobitcoin.com/charts/bitcoin-investor-tool/   （2year MA）
 ## 资源8：https://glassnode.com/
 ## 资源9：https://coinmetrics.io/
-
-
+## 资源10: https://research.arcane.no/
+## 资源11: https://www.cryptocompare.com/
+## 资源12: https://www.kaggle.com/
+## 资源13: https://tokeninsight.com/
+## 资源14: https://www.intotheblock.com/
+## 资源15: https://tokenview.com/
+## 资源16: https://www.tradingview.com/chart/
 
 
 
