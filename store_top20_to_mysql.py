@@ -4,7 +4,7 @@ db = pymysql.connect('localhost', 'root', '158216dl', 'crypto_price')
 cursor = db.cursor()
 
 # 如下这条需要换
-original = ['2020-06-17', 'BTC', 'ETH', 'USDT', 'XRP', 'BCH', 'BSV', 'LTC', 'BNB', 'EOS', 'ADA', 'CRO', 'XTZ', 'XLM', 'LINK', 'XMR', 'LEO', 'TRX', 'HT', 'NEO', 'USDC']
+original = ['2020-06-18', 'BTC', 'ETH', 'USDT', 'XRP', 'BCH', 'BSV', 'LTC', 'BNB', 'EOS', 'ADA', 'CRO', 'XTZ', 'XLM', 'LINK', 'LEO', 'XMR', 'TRX', 'HT', 'NEO', 'USDC']
 
 sql = """INSERT INTO top20 (
          dates,

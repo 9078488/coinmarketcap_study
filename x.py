@@ -52,6 +52,9 @@ print('-' * 100)
 ## 资源14: https://www.intotheblock.com/
 ## 资源15: https://tokenview.com/
 ## 资源16: https://www.tradingview.com/chart/
+## 资源17: https://coinstats.app    (有history api)
+## 资源18: https://www.theblockcrypto.com/
+## 资源19: https://ahr999.com/
 
 
 
