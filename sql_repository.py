@@ -1,9 +1,3 @@
-import pymysql
-
-db = pymysql.connect('localhost', 'root', '158216dl', 'crypto_price')
-
-cursor = db.cursor()
-
 sql = """CREATE TABLE crypto_price_table (
          id INT AUTO_INCREMENT,
          cmc_rank_1 VARCHAR(150),
@@ -108,6 +102,32 @@ sql = """CREATE TABLE crypto_price_table (
          cmc_rank_100 VARCHAR(150),
          PRIMARY KEY (id))"""
 
+
+sql = """CREATE TABLE top20 (
+         id INT AUTO_INCREMENT,
+         dates DATE NOT NULL,
+         cmc_rank_1 VARCHAR(150),
+         cmc_rank_2 VARCHAR(150),
+         cmc_rank_3 VARCHAR(150),
+         cmc_rank_4 VARCHAR(150),
+         cmc_rank_5 VARCHAR(150),
+         cmc_rank_6 VARCHAR(150),
+         cmc_rank_7 VARCHAR(150),
+         cmc_rank_8 VARCHAR(150),
+         cmc_rank_9 VARCHAR(150),
+         cmc_rank_10 VARCHAR(150),
+         cmc_rank_11 VARCHAR(150),
+         cmc_rank_12 VARCHAR(150),
+         cmc_rank_13 VARCHAR(150),
+         cmc_rank_14 VARCHAR(150),
+         cmc_rank_15 VARCHAR(150),
+         cmc_rank_16 VARCHAR(150),
+         cmc_rank_17 VARCHAR(150),
+         cmc_rank_18 VARCHAR(150),
+         cmc_rank_19 VARCHAR(150),
+         cmc_rank_20 VARCHAR(150),
+         PRIMARY KEY (id))"""
+
 sql = """INSERT INTO crypto_price_table
          (cmc_rank_1,  cmc_rank_2,  cmc_rank_3,  cmc_rank_4,  cmc_rank_5,  cmc_rank_6,  cmc_rank_7,  cmc_rank_8,  cmc_rank_9,  cmc_rank_10,
           cmc_rank_11, cmc_rank_12, cmc_rank_13, cmc_rank_14, cmc_rank_15, cmc_rank_16, cmc_rank_17, cmc_rank_18, cmc_rank_19, cmc_rank_20,
@@ -140,3 +160,15 @@ sql = """INSERT INTO crypto_price_table
            ll[70],      ll[71],      ll[72],      ll[73],      ll[74],       ll[75],      ll[76],      ll[77],      ll[78],      ll[79],
            ll[80],      ll[81],      ll[82],      ll[83],      ll[84],       ll[85],      ll[86],      ll[87],      ll[88],      ll[89],
            ll[90],      ll[91],      ll[92],      ll[93],      ll[94],       ll[95],      ll[96],      ll[97],      ll[98],      ll[99])
+
+sql = """INSERT INTO top20 (
+         dates,
+         cmc_rank_1,  cmc_rank_2,  cmc_rank_3,  cmc_rank_4,  cmc_rank_5,  cmc_rank_6,  cmc_rank_7,  cmc_rank_8,  cmc_rank_9,  cmc_rank_10,
+         cmc_rank_11, cmc_rank_12, cmc_rank_13, cmc_rank_14, cmc_rank_15, cmc_rank_16, cmc_rank_17, cmc_rank_18, cmc_rank_19, cmc_rank_20)
+         VALUES
+         ('%s',
+          '%s',        '%s',        '%s',        '%s',        '%s',        '%s',        '%s',        '%s',        '%s',        '%s',
+          '%s',        '%s',        '%s',        '%s',        '%s',        '%s',        '%s',        '%s',        '%s',        '%s')"""%(
+          original[0],
+          original[1], original[2], original[3], original[4], original[5], original[6], original[7], original[8], original[9], original[10],
+          original[11], original[12], original[13], original[14], original[15], original[16], original[17], original[18], original[19], original[20])
