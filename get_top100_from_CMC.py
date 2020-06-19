@@ -4,7 +4,7 @@ import json
 from pandas import DataFrame
 import pandas as pd
 
-
+print('start')
 
 url = 'https://pro-api.coinmarketcap.com//v1/cryptocurrency/listings/latest'
 parameters = {
@@ -91,6 +91,7 @@ try:
    cursor.execute(sql)
    # 提交到数据库执行
    db.commit()
+   print('OK')
 except:
    # 如果发生错误则回滚
    db.rollback()
