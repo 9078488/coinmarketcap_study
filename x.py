@@ -55,6 +55,7 @@ print('-' * 100)
 ## 资源17: https://coinstats.app    (有history api)
 ## 资源18: https://www.theblockcrypto.com/
 ## 资源19: https://ahr999.com/
+## 资源20: https://www.qkl123.com/
 
 
 
