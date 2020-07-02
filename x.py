@@ -56,6 +56,13 @@ print('-' * 100)
 ## 资源18: https://www.theblockcrypto.com/
 ## 资源19: https://ahr999.com/
 ## 资源20: https://www.qkl123.com/
+## 资源21: https://www.aicoin.cn/
+## 资源22: https://santiment.net/
+## 资源23: https://cointelegraph.com/
+## 资源24: https://dappradar.com/
+## 资源25: https://defipulse.com/
+## 资源26: https://www.longhash.com/cn
+
 
 
 
