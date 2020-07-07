@@ -36,8 +36,8 @@ print('-' * 100)
 
 # 不错的资源
 
-## 资源1：https://cryptodiffer.com/news/category/hot/
-## 资源2：https://www.coingecko.com/zh
+## 资源1：https://cryptodiffer.com/news/category/hot/   (无API)
+## 资源2：https://www.coingecko.com/zh (有价格API)
 ## 资源3：https://bc.cnvd.org.cn/ （区块链漏洞子库）
 ## 资源4：https://grayscale.co/
 ## 资源5：https://100trillionusd.github.io/index.html  （PlanB）
