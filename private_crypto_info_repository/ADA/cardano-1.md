@@ -193,5 +193,32 @@ si是由利益相关者Ui持有的质押（我们称之为根据质押的权重�
 
 FDSIG按如下方式和利益相关者交互作用：
 
-**密钥生成**  Upon receiving a message (KeyGen, sid) from a stakeholder Ui, verify that sid
+**密钥生成**  在收到来自利益相关者Ui的信息(KeyGen, sid)，为一些sid验证sid =(Ui, sid0)。如果不是，忽略这个要求。另外，将(KeyGen, sid)交给敌对放。在从敌对放收到(VerificationKey, sid, v)，输出(VerificationKey, sid, v)到Ui,记录对(Ui, v).
+
+**签名生成** 从Ui处收到一个消息(Sign, sid,m)，为一些sid0验证sid =(Ui, sid0)。如果不是，那么忽略要求。另外，发送(Sign, sid,m)给敌对放，在收到从敌对方收到(Signature, sid, m, )，验证没有条目(m, , v, 0)被记录。如果是，那么输出一个错误的信息给Ui,并且停止。此外，输出(Signature, sid, m, )给Ui,并且记录条目(m, , v, 0).
+
+**签名验证** 在从利益相关者Ui收到一个信息(Verify, sid, m, , v0)，把(Verify, sid, m, , v0)交给敌对方。在从敌对方处收到(Verified, sid, m, )：
+
+1. 如果v0 = v，并且条目(m, , v, 1)被记录，那么设置f = 1.（这个条件确保完整：如果验证密钥v0是登记的那个，是为m合理的生成的签名，那么验证成功）
+2. 另外，如果v0 = v,签名者没有被夫八百，并且没有对于任何0的条目(m, 0, v, 1)被记录，那么设置f = 0，并且记录条目(m, , v, 0).（这个条件确保不可伪造性：如果v0是登记的那个，签名者不会被腐败，并且从不会签署m,那么验证失败）
+3. 另外，如果有一个条目(m, , v0, f0)被记录，那么让f = f0.（这个条件确保一致性：所有的验证要求，带有完全相同的参数会导致相同的答案）
+4. 另外，让f = ，并且记录条目(m, , v0, ).
+
+输出(Verified, sid, m, f)给Ui.
+
+第一，在图形3，我们展示了函数Fdsig,在【14】中被定义的，也被展示位EUF-CMA签名组合认识到Fdsig.注意这个事实会被用做去展示我们理想的协议可以实际的被认识到，基于实际的数字签名组合，比如DSA和 ECDSA），最后，iSPoS和SPoS.是不能区分。
+
+理想的协议iSPoS被利益相关者运行，和FD,FLS [FDSIG] 与FDSIG相互作用。基本上，iSPoS作为SPoS来运转，除了条用Vrfvk() 和 Signsk(m).也就是说，不是本地计算Signski(m)，Ui发送(Sign, sid,m)给FDSIG,收到(Signature, sid, m, )并且输出作为签名。此外，不是本地计算Vrfvk0(,m)，Ui发送(Verify, sidi, m, , v0)给FDSIG（v0对应验证密钥vk0），输出在消息(Verified, sidi, m, f)中收到的值。协议iSPoS在图形4中被描述。理想的描述会被进一步的开发，当讨论动态的质押情况，额外的建立的区块必须在理想的协议里被考虑。
+
+如下的名命题是一个结果的立即的推论，在展示,EUF-CMA签名组合意识到FDSIG
+
+**命题 4.8** 对每个PPT A,Z它保持，那儿有一个PPT S，因此EXECP,FD,FLS [SIG]SPoS,A,Z ()和EXECP,FD,FLS [FDSIG]iSPoS,S,Z ()从计算方面讲是不能区分的
+
+鉴于上述命题，在剩下的分析里我们会集中于这些性质。
+
+In light of the above proposition in the remaining of the analysis we will focus on the properties
+
+**协议**
+
+is a protocol run by stakeholders
 
