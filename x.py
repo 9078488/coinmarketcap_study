@@ -62,6 +62,12 @@ print('-' * 100)
 ## 资源24: https://dappradar.com/
 ## 资源25: https://defipulse.com/
 ## 资源26: https://www.longhash.com/cn
+## 资源27: https://block.info/index
+## 资源28: https://chainext.io/home
+## 资源29: http://deepdao.io/
+## 资源30: https://www.delphidigital.io/
+## 资源31: https://www.burgercrypto.com/
+## 资源32: https://www.coindesk.com/ (找下coindesk 20)
 
 
 
