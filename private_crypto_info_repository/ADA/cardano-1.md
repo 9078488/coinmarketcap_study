@@ -547,7 +547,11 @@ n = 2−
 (p
 n),
 
-Exact probabilities of forkability for explicit values of n. In order to gain further insight
+**提取分叉的可能性，用于n的明确的值** 为了获得进一步的洞察力，关于分叉字符串的密度，我们精确地计算可能性，一个字符串w,从二项分布中提取，带有参数p 2 {.40, .41, . . . , .50}，是可分叉的，对于若干不同的长度。这些结果在图形8中表示。
+
+**4.3.1  秘密的敌对方，秘密的分叉，秘密地可分叉字符串**
+
+The general notion of fork defined in Definition 4.10 above reflects
 
 
 
