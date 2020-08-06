@@ -654,10 +654,62 @@ h <  =) d(h)  min(length(t1), length(t2)) .
 
 来看这个，考虑诚实的指数h < 和一个尖头th，对于`(th) = h.回想t1 和t2 是可行的；当h < `(t2)，它遵循立即地，d(h)  length(t2).类似的，如果h  `(t1)，那么d(h)  length(t1),所以它保持去解决这个情况，当`(t1) < h < `(t2):特别地，在这个管理体制，我们希望同样的确保d(h)  length(t1).为了否认的利益，假定length(th) = d(h) > length(t1).考虑尖头th,我们分别第调查两个情况，取决于是否th共享和t1一个边缘,在顶点y后。如果，实际上，th 和 t1贡献一个边缘，在顶点y后，然后th和 t2不分享这样的边缘，我们观察到div(th, t2)  div(t1, t2) while |`(t2) − h| < |`(t2) − `(t1)|，和（12）矛盾。如果，换句话说，th在y后和t1不共享任何边缘，我们类似地观察到div(t1, th)  div(t1, t2)，当|th − `(t1)| < |`(t2) − `(t1)|,和（12）矛盾
 
-In light of the remarks above, we observe that the fork F may be “pinched” at y to yield an
-essentially identical fork FByC ` w with the exception
+根据上述注意，我们观察到分叉F可能是被“捏”住，在y，去生成一个本质上完全相同的分叉FByC ` w，带有例外长度超过depth(y)的所有尖头穿过顶点y。特别地，分叉FByC ` w被定义成图表，从F获得，通过改变F的每个边缘，指向到一个长度为depth(y) + 1的顶点，所以他起源于 y.去看到结果树是一个精心设计的分叉，他满足去检查`(·)仍任随着所有FByC的尖头一起增加。为了这个目的，考虑这个打尖的影响，在一个独立的尖头t,在特别的顶点v处终止-他用尖头tByC替代，定义，所以：
+
+- 如果length(t)  depth(y),尖头t是未改变的：tByC = t.
+- 否则，length(t) > depth(y)，并且t有一个深度为depth(y) + 1的尖头；注意`(z) > `(y)，因为F0不包含任何深度超过depth(y)的尖头。那么tByC被定义为这个路径，通过尖头在y处终止，一个（新的）边缘来自y到z,并且t的后缀在z处开始（正如`(z) > `(y)，这拥有增加的标签性质）
+
+因此树FByC是一个合法的分叉，在相同的顶点集；注意F中顶点的深度和FByC是完全相同的
+
+通过删除根植于y的树，从这个捏的分叉FByC，我们可能提取一个分叉，对于字符串w+1 . . .wn。特别地，考虑感应的FByC的子图，由顶点{y} [ {z | depth(z) > depth(y)}改变。通过把y对待为一个根顶点，适当地定义标签`yC of FyC so that `yC(z) = `(z) − `(y), 这个子图定义了一个分叉的性质，对于w+1 . . .wn.特别，，考虑是诚实的，它遵循每个诚实的指数h > 有深度depth d(h) > length(y)，因此归类一个顶点在FyC.对于FByC的尖头t,我们用tyC表示在y处开始的尖头的后缀，在FyC中形成一个尖头（如果length(t)  depth(y)，我们定义tyC去仅仅包含顶点y)。注意在分叉FyC中，tyC
+1 和 tyC
+2部共享边缘。
+
+最后，用ˇ表示一个树，从FyC处获得，当FyC的所有尖头t的联合，因此t的所有的标签从提取（当它出现，作为w+1 . . .wn的前缀），并且
+
+length(t)  max
+h| ˇ w|
+h honest
+
+它是直接的ˇ F ` ˇ w.为了推断这个证明，我们显示是平的。为了这个目的，我们考虑尖头tyC
+1 and tyC。如上所述，他们在FyC不共享任何边缘，因此在ˇ出现的(of tyC
+1 和 tyC
+2的 )前缀t1 和 ˇ t2不共享边缘。我们希望看到这些前缀在中有最大的长度，在是平的情况下，如要求。这个是立即的，对于尖头t1，因为tyC的所有标签都从w处提取，考虑(13)，它的深度至少是所有相关的诚实的顶点。正如对于ˇ t2,观察到如果`(t2)不是诚实的，那么 > `(t2)，因此，正如带有ˇ t1,尖头ˇ t2被w归类，因此相同的论证，依靠(13),确保t2有长度，至少是所有的相关的诚实的顶点。如果`(t2)是诚实的， = `(t2),并且tyC的终点的顶点不会在F中出现（当它不用ˇ做索引）。在这种情况，但是length(tyC
+2 ) > d(h)，对于任何w的诚实的索引，它遵循length( ˇ t2) = length(tyC
+2 ) − 1是至少任何w的诚实的指数的深度，如要求。
+**定理 4.27** 让k,R 2 N 和  2 (0, 1). 这个可能性，iSPoS协议，当带有敌对方质押的a (1 − )/2 f小部分执行时，违反普通的前缀性质，带有参数k，遍及R位置的时间点不超过exp(−
+(
+p
+k) + lnR);，常量通过()概念隐藏，依赖.
+
+梗概。 观察iSPoS的执行违反普通的前缀性质，带有参数k，R精确地，当分叉F有执行引起的有div(F)  k.因此，我们希望去战时这个可能性，div(w)  k不超过exp(−
+(
+p
+k) + logR).用Bad来表示事件，div(w)  k.
+
+它从定理4.26推断出，如果div(w)  k,有一个长度至少是k的可分叉的字符串w
+
+因此
+
+Pr[common prefix violation]  Pr
+
+9,  2 {1, . . . ,R} so that +k −1   and
+w . . .w is forkable
+
+
+X
+1R
+X
++k−1R
+Pr[w . . .w is forkable]
+| {z }
 
 
 
 
+
+
+
+Recall that the characteristic string w 2 {0, 1}R for such an execution of iSPoS is determined
+by assigning each wi = 1 independently with probability (1 − )/2. According
 
