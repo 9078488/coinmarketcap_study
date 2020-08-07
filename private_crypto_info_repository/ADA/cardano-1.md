@@ -704,12 +704,66 @@ X
 Pr[w . . .w is forkable]
 | {z }
 
+回想典型的字符串w 2 {0, 1}R，对于这样iSPoS的执行是被赋值wi = 1决定的，独立地带有可能性(1 − )/2.根据定理4.13，可能性，长度为t的字符串，从分布里提取，是可分叉的，不超过exp(−c
+p
+t)，对于证的常数c，注意对于任何  1,
+
+XR
+t=+k−1
+e−c
+p
+t 
+Z 1
+k−1
+e−c
+p
+t dt = (2/c2)(1 + c
+p
+k − 1)e−c
+p
+k−1 = e−
+(
+p
+k)
+
+他遵循上述sum ()是exp(−
+(p
+t)).因此
+
+Pr[common prefix violation]  R · exp(−
+(
+p
+k))  exp(lnR − 
+(
+p
+k)) ,
+
+被需求。
+
+**4.4.1 普通的前缀，带有秘密的敌对方**
+
+我们再访问普通前缀的概念，在秘密敌对方的设置里。我们定义w的秘密的差异称为最大差异，在所有可能的秘密分叉，对于w：
+
+cdiv(w) = max
+F`w
+F covert
+div(F) .
+
+正如在带有一般敌对方的设置里，我们希望去建立一个带有更大的秘密的差异的字符串，必须有一个更大的秘密地可分叉的子字符串。定理4.27的直接的类似物意味着典型的字符串，从iSPoS升起，不可能有打的秘密的差异，因此，掌握普通的前缀性质，对抗秘密的敌对方。
+
+我们记录定理4.26的类似物，对于秘密的敌对方
+
+**定理 4.28** 让w 2 {0, 1}，那么那有一个秘密地分叉的w的子字符串w，带有| ˇ w| 
+cdiv(w).
+
+证明。我们更间接，作为证明的部分，有直接的类似物，在定理4.26的证明里有直接的类似物，考虑一个秘密的分叉F ` w和一对F的可行的尖头(t1, t2)，对于div(t1, t2) = cdiv(w);我们假定尖头是被识别的，因此`(t1) < `(t2)，并且，在一般情况的证明下，假定尖头的对最小化数量|`(t2)−`(t1)|，在所有的对中，带有等于cdiv(w)的差异。
+
+用y表示最后的顶点在尖头t1 \ t2.与带有一般敌对方的设置的对照里，不清楚y是诚实的，他激励着一个轻微的不同的选择，对于字符串w的开始：定义称为最大的诚实的w的指数，在尖头t1 \ t2,带有惯例， = 0，如果没有这样的指数。正如在定理4.26的证明，定义称为最小的诚实的w的指数，对于  `(t2),带有惯例 = n + 1，如果没有这样的诚实的w的指数。那么定义w = w+1 . . .w−1;在定理4.26的证明里，确认| ˇ w| = ( −1)−  `(t1)−`(t1 \ t2)  cdiv(w).是容易的。证明的剩余部门证明w是秘密的分叉的。
+
+正如在定理4.26的证明里，任何诚实的指数h < 的深度d(h)不超过min(length(t1), length(t2)):如果h  `(t1)，他直接由可行性的定义推断。否则，`(t1) < h < `(t2)，并且我们考虑尖头th，标签为h:如果length(th) 
+min(length(t1), length(t2))，那么尖头th，与t1 或 t2结合，将会产生一对带有差异的尖头，不超过div(t1, t2),但是对于|`(·) − `(·)|是严格的小于|`(t1) − `(t2)|.
 
 
 
-
-
-
-Recall that the characteristic string w 2 {0, 1}R for such an execution of iSPoS is determined
-by assigning each wi = 1 independently with probability (1 − )/2. According
-
+To complete the proof, we define an injective function i : H ! A, where H denotes the set of
+honest indices in {+1, . . . , −1} and A the complement—the set of adversarial indices of ˇ w. The
