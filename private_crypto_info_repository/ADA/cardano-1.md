@@ -763,7 +763,49 @@ cdiv(w).
 正如在定理4.26的证明里，任何诚实的指数h < 的深度d(h)不超过min(length(t1), length(t2)):如果h  `(t1)，他直接由可行性的定义推断。否则，`(t1) < h < `(t2)，并且我们考虑尖头th，标签为h:如果length(th) 
 min(length(t1), length(t2))，那么尖头th，与t1 或 t2结合，将会产生一对带有差异的尖头，不超过div(t1, t2),但是对于|`(·) − `(·)|是严格的小于|`(t1) − `(t2)|.
 
+为了完成这个证明，我们定义了一个单射的函数i:H ! A,用H表示诚实的指数集，在{+1, . . . , −1}和A补足-w的敌对指数的集合。这样的函数的存在意味着|H|  |A|，因此w是秘密地可分叉的，通过在命题4.22中的给出的标准。让A0  A表示w的敌对方的指数的集合，作为两个尖头t1和t2上的标签出现。函数i被定义成如下：i(h)，对于一个诚实的指数h 2 H,是A的最小的（敌对的）指数，标签一个顶点，在深度等于d(h).假定这个函数是定义明确的，他清楚地内射的，当标签不能出现在一个秘密分叉的多重的顶点上，诚实顶点的深度是成对地有区别的。
+
+为了确认i(h)是明确定义的，注意对于任何h 2 H，我们必须有d() < d(h) 
+min(length(t1), length(t2))，因此有至少一个顶点v在t1和t2的每个上，带有等于d(h)的深度；除外，通过定义 h和的性质，这个顶点被标签未w的一个索引。如果d(h)  length(t1 \ t2),在这些尖头上有一个普通的顶点v,对于length(v) = d(h);注意这个顶点不能是诚实的，通过,的定义，所以i(h) = `(v)在这种情况下是定义明确的。如果d(h) > length(t1 \ t2),两个尖头有区别的顶点，在深度d(h)，这些当中的一个必须然后是敌对的-因此i(h)在这种情况下也是明确定义的。
+
+最终，我们注意定理4.27的证明通过较小的改编，到秘密的情况。
+
+**定理 4.29** 让k,R 2 N和 2 (0, 1).可能性，iSPoS协议，带有敌对方质押的a (1 − )/2部分执行，一个秘密的敌对方，违反普通前缀性质，带有参数 k,遍及R的一个阶段，不超过exp(−
+(k)+lnR);通过() notation概念隐藏的常熟仅仅依赖.
+
+*证明* 定理4.27的证明直接应用；在这种情况下，渐进依赖定理4.23，如下的限制在一个方式下应用，常数c仅仅依赖.
+
+t=k
+e−ct 
+Z 1
+k−1
+e−ct dt = e−(k) .
+
+**链增长和链质量**
+
+预见这两个证明，我们记录一个累积的Chernoff–Hoeffding的限制（参照例子[29]，对于一个证明）
+
+**定理 4.3** （Chernoff–Hoeffdin 限制）让X1, . . . ,XT称为独立随机变量，带有E[Xi] = pi 和 Xi 2 [0, 1].r昂X = PTi
+=1 Xi and μ = PTi
+=1 pi = E[X].那么，对于所有  0,
+
+Pr[X  (1 + )μ]  e− 2
+2+ μ and Pr[X  (1 − )μ]  e− 2
+2+ μ .
+
+我们将带着链增长性质开始。
+
+**定理 4.31** iSPoS协议满足链增长性质，带有参数 = 1 −
+, s 2 N，遍及R位置的一个事件点，带有可能性至少1−exp(−
+(2s)+lnR)，针对一个敌对的持有一个 − 部分，总的质押。
+
+*证明* 定义Hama()称为事件，典型的字符串的汉明重量比例，对应位置[a, a + s − 1]，不超过.考虑到敌对的质押是 − ,k位置的每个有可能性 − ，被分配给敌对方，隐藏可能性，汉明质量大于s，在s中以指数方式降低。特别地，用Chernoff限制的累积的版本，我们有Pr[¬Hama()]  exp(−22s).它遵循：
+
+Pr[Ham]  1 − exp(−22s) .
 
 
-To complete the proof, we define an injective function i : H ! A, where H denotes the set of
-honest indices in {+1, . . . , −1} and A the complement—the set of adversarial indices of ˇ w. The
+
+Given the above we know that when Ham happens there will be at least (1 − )s honest slots in
+the period of s rounds. Given that each honest slot enables an honest party to produce a block,
+all honest parties will advance by at least that many blocks. Using a union bound,
+
