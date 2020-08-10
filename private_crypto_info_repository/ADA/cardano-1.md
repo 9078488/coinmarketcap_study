@@ -803,9 +803,39 @@ Pr[X  (1 + )μ]  e− 2
 
 Pr[Ham]  1 − exp(−22s) .
 
+考虑到上述我们知道，当Ham发生，将有至少(1 − )s诚实的位置，在S循环期间。考虑到每个诚实的位置，使得一个诚实的方可以去生成一个区块，所有的诚实的参与方会前进，通过至少许多区块。使用一个联盟限制，它遵循速度系数，可以被设置未 = (1 − )，它被满足带有带有可能性，至少1 − exp(−22s + ln(R)).
 
+已经建立了链增长，我们现在把我们的注意力转向链质量。回忆链质量性质，带有参数μ 和 `，主张，每一个`连环的区块，在链中（由诚实的用户拥有），敌对发的区块的部分不超过μ.
 
-Given the above we know that when Ham happens there will be at least (1 − )s honest slots in
-the period of s rounds. Given that each honest slot enables an honest party to produce a block,
-all honest parties will advance by at least that many blocks. Using a union bound,
+**定理 4.32** 让 − 称为敌对的质量率。iSPoS协议满足链质量属性。带有参数μ( − ) = /(1 − )，并且` 2 N，遍及R位置的每个时间点，至少带有可能性
+
+1 − exp􀀀
+−
+(2`) + lnR
+
+.
+
+**证明** 第一，从对于链增长的证明（定理4.31），我们知道带有高可能性，`循环的部分将设计(1−)`位置，带有诚实的领导者；因此，结果的链必须增长，通过至少(1−)`区块。通过类似的推理，敌对方和不超过`位置关联，因此能够贡献不超过`区块，到任何特定的链，在这个期间。它遵循关联的链，由任何诚实的参与方拥有，包含敌对区块的部分/(1 − )，带有可能性1−exp(−
+(2 min(, 1−)`)+lnR).
+
+**5. 我们的协议：动态的质押**
+
+**5.1 用一个可信任的信号浮标**
+
+在前面的章节中协议的静态的版本，我们假定质押是静态的，在整个执行期间（例如，一个时间点），意味着质押改变手，在一个给定的时间点。不影响领导者的选择。现在，我们提出一个协议SPoS的修改，能后被执行，在多个事件点，以这样的方式，每个时间点的领导者选择过程是被参数，通过质押分布，在之前的时间点的一个特定的指定的点，允许在质押分中的质押，跨域事件点，去影响领导者选择过程。如之前，我们建造协议，以一个混合的方式，增强FD,F理想的功能到现在提供不可测性和辅助的信息，对于领导者选择过程，遍及所有时间点（增加的功能被称作FD,F
+DLS).）我们然后讨论如何去实施FD,F
+DLS，仅仅用FD,F，并且在这个方式减少假设，回到简单的普通的随机的字符串，在设置利选择的。
+
+在描述对于动态质押的情况的协议之前，我们需要解释FD,F的修改，所以多个时间点是被考虑的。结果的功能FD,F
+DLS,允许利益相关者去查询它，对于领导选择数据，针对每个时间点。FD,F
+DLS通过每个利益相关者的最初的质押的参数表示，在第一个时间点e1开始时；在随后的时间中，参与方会考虑到质押分布，在之前的时间点的第一的R − 2k位置的最近的区块。考虑到没有利益相关者分布的预先决定的视角，函数FD,F
+DLS将仅提供一个随机的字符串，将离开解释，根据利益相关者分布，到参与方，调用它。有效的利益相关者分布时序列S1, S2, . . .，定义如下：S1是最初的利益相关者分布；对于位置{(j − 1)R + 1, . . . , jR}，对于j  2，有效的利益相关者Sj被质押分配决定，在最近的区块找到，带有时间戳，至多(j −1)R−2k,如果所有诚实的参与方同意它，或者未明确的，如果诚实的参与方未打成一直。函数FD,F
+DLS被在图形10中定义。
+
+We now describe protocol DPoS, which is a modified version of SPoS that updates its genesis
+block B0 (and thus the leader selection process) for every new epoch. The protocol also adopts
+an adaptation of the static maxvalidS function, defined so that it narrows selection to those chains
+which share common prefix. Specifically, it adopts the following rule, parameterized
+
+34页，上面的框框
 
