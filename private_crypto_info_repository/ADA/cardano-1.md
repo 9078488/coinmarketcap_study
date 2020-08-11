@@ -832,10 +832,52 @@ DLS通过每个利益相关者的最初的质押的参数表示，在第一个�
 DLS将仅提供一个随机的字符串，将离开解释，根据利益相关者分布，到参与方，调用它。有效的利益相关者分布时序列S1, S2, . . .，定义如下：S1是最初的利益相关者分布；对于位置{(j − 1)R + 1, . . . , jR}，对于j  2，有效的利益相关者Sj被质押分配决定，在最近的区块找到，带有时间戳，至多(j −1)R−2k,如果所有诚实的参与方同意它，或者未明确的，如果诚实的参与方未打成一直。函数FD,F
 DLS被在图形10中定义。
 
-We now describe protocol DPoS, which is a modified version of SPoS that updates its genesis
-block B0 (and thus the leader selection process) for every new epoch. The protocol also adopts
-an adaptation of the static maxvalidS function, defined so that it narrows selection to those chains
-which share common prefix. Specifically, it adopts the following rule, parameterized
+功能FD,F
 
-34页，上面的框框
+FD,F包含传播和私钥/交易功能，来自章节2，以公钥为参数，最初的（在时间点e1之前）利益相关者S0 = {(vk1, s01
+), . . . , (vkn, s0
+n)}分布D的分别的质押，和一个领导选择函数F.此外，FD,F
+DLS操作如下：
+
+- **创世块产生** 在从利益相关者Ui收到(genblock req,Ui)，它在那个消息上入函数FD,F
+  LS [SIG]操作
+- **签名私钥对生成** 它入函数FD,F
+  LS [SIG].操作
+- **时间点随意更新** 在从利益相关者Ui收到(epochrnd req,Ui, ej)，如果哟j  2是当前的时间点，FD,F
+  DLS按如下进行。如果j没有被设置，FD,F
+  DLS取样j   D，那么FD,F
+  DLSf发送(epochrnd, j)给Ui.
+
+我们现在描述协议DPoS，是SPoS的修改版本，更新它的创世块B0（并且因此领导选择过程），对于每个新的实践点。协议也采用静态maxvalidS函数的改编本，定义，所以它使选择变窄，到这些链，共享普通的前缀。特别的，它采用了如下的规则，用前缀长度k为参数：
+
+函数maxvalid(C,C).返回最长的链，从C [ {C}，不从C分叉，超过k区块。如果多重的存在，它返回C，如果它是他们中的一个，或者它返回在C中列举处的。
+
+协议 DPoS在图形11中描述，并且函数在FD,F
+DLS混合模型。
+
+**备注1** 对maxvalid(·)的修改不偏离超过k区块，从最后被拥有的链，要求利益相关者至少没K个位置在线。规则的关联来自事实，当质押随着时间变换， 它将是可行的，对于敌对方去腐败利益相关者，被用来拥有一个质押大多数，在某一时刻，不触发Bad1/2，因此任何被产生的敌对的链，由于这样一个时间被拒绝。它没有任何价值，这个限制可以被容易的移除，如果一个人能够信任诚实的利益相关者，去安全的擦除他们的记忆。在这个情况下，一个向前的安全的签名可以被采用去挫败任何过去的腐败尝试，试图包围Bad1/2.
+
+协议 DPoS
+
+DPoS是一个由一组利益相关者运行的，最初等于U1, . . . ,Un,和FD,F
+DLS交互，在一个L slots S = {sl1, . . . , slL}. DPoS的序列，运行如下：
+
+1. **初始化** 利益相关者Ui 2 {U1, . . . ,Un},从私钥登记界面收到它的公钥和私钥。然后它从传播界面收到当前的位置，在情况，它是sl1，它发送genblock req,Ui)到FD,F
+   LS ,收到(genblock, S0, , F)作为答案。Ui设置本地区块链C = B0 = (S0, )和它的初始化内部的状态st = H(B0).否则，它受到来自钥登记界面，最初的链C，设置本地的区块链作为C，和最初的内部的状态st = H(head(C)).
+
+2. **链扩展** 对于每个位置sl 2 S，每个在线的利益相关者Ui执行如下的步骤：
+
+   (a) 如果一个新的时间点ej ,带有j  2,开始了，Ui定义Sj为利益相关者分布，提取自最近的区块，带有小于jR − 2k的时间戳，正如在C中反映的，并且发送(epochrnd req,Ui, ej)到FD,F
+   LS ,收到(epochrnd, j)作为答案。
+
+   (b) 收集所有的有效的链，通过广播进集合C收到，验证，对于每个链C0 2 C和每个区块B0 = (st0, d0, sl0, 0) 2 C0，它保持Vrfvk0 (0, (st0, d0, sl0)) = 1,vk0是利益相关者U0 = F(Sj0 , j0
+   , sl0) withd的验证钥匙，带有ej0称为时间点，位置B0属于（如由sl0决定）。Ui计算C0 = maxvalid(C,C),设置C0作为新的本地链，并且设置状态st = H(head(C0)).
+
+   (c) 如果Ui是位置领导，由在当前时间点ej中的F(Sj , j , sl)决定，它产生一个新的区块B = (st, d, sl, )，st是当前状态，d 2 {0, 1}是数据， = Signski (st, d, sl)是在(st, d, sl)上的签名。Ui计算C0 = C|B,广播C0，设置C0作为新的本地链，并且设置状态st = H(head(C0)).
+
+   3. **交易生成** 如在协议SPoS.中
+
+   5.2 Simulating a Trusted Beacon
+
+
 
