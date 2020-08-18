@@ -1022,19 +1022,32 @@ V (E)，V的会员的次数被选择去背书一个输入，在时间点j.
 
 我们将建立这个事实，我们的协议是一个-纳什均衡，通过i哦证明联合V，甚至脱离合适的协议行为，他不能获得效用，超过RV (E)+，对于一些合适的常数 > 0.
 
-Theorem 7.1. Fix any  > 0; the honest strategy in the protocol is a -Nash equilibrium against any
-coalition commanding a proportion of stake less than (1 − )/2 −  for some constants ,  2 (0, 1)
-as in Theorem 5.2, provided that the maximum total rewards Pall provided in all possible protocol
-executions is bounded by a polynomial in , while CQ + CP + CG + DLS is negligible in .
-Proof sketch. Consider a coalition of rational players V restricted as in the statement of the theorem,
-that engages in a protocol execution together with a number of other players that follow
-the protocol faithfully for a total number of L epochs. We will show that any deviation from the
-protocol will not result in substantially higher rewards for V . Observe that based on Theorem 5.2,
-no matter the strategy of V , with probability 1 − (L/R)(CQ + CP + CG) the protocol will enable
-all users to obtain the rewards they are entitled to as slot leaders and input endorsers. The latter
-stems from the following. First, from persistence and liveness, at least one
+**定理 7.1** 确定任何 > 0;协议中诚实的策略是一个-纳什均衡，针对任何联合命令一定笔录的质押，少于(1 − )/2 − ，对于一些常数,  2 (0, 1)，如在定理5.2,加入最大的总奖励Pall，在所有的可能的协议执行中提供的，被在中的多项式限制，当CQ + CP + CG + DLS在中是微不足道的。
 
+证明梗概。 考虑离职的选手V的联合，限制如在定理的陈述中，参与协议执行，连同许多其他选手，忠实地遵循协议，对于L时间点的总数。我们将展示任何与协议的偏差，不会导致大体上较高的奖励，对于V。观察到基于定理5.2，不论V的策略怎样，带有可能性1 − (L/R)(CQ + CP + CG)，这个协议将会使得所有用户去获得奖励，他们被授权有资格称为位置领导者和输入背书者。后者起源于下面的。第一，来自才继续和活跃性，至少一个诚实的区块将被包含，每个K区块，因此，在每个时间点，所有的遵循这个协议的输入被试者，将有机会成熟输入背书者，和他们被选举的次数一样多的次数。第二，收到的奖励江河每个方是一个输入背书者的次数成比例，成功地发布一个区块，也他是位置领导者的次数相等。我们观察到除了带有可能性(L/R)(CQ+CP+CG)，通过联合收到的使用，等于RV .他遵循选手V预期效用至多E[RV ] + (L/R)(CQ + CP + CG)PAll,当PAll是奖励的最大数额，在所有可能的执行的寿命里产生的。结果遵循，通过在定理陈述中的假设，因为(L/R)(CQ + CP + CG)PAll  .
 
+**注意 3**  在上述定理中，为简单起见，我们假定协议成本部影响最后的效用（其实这以上为着协议成本被假定为微不足道的）。然而，简单的去扩展证明去覆盖一个设置，一个负的属于被介绍，在结算函数，对于每个选手，和输入的次数成比例，被背书，对于MPC协议，传输的消息的数量，这个证明对这些修改是有叹息给的，因为背书的输入和MPC协议消息不能被敌对方扼杀。因此奖励函数可以被设置带有合适的重要性，对于这样的行为，抵消他们的成本，仍然注意提供的奖励被假定为“平的”，对于位置和背书的输入，因此成本也必须是平的。我们动身去未来的工作，一个更加精确的设置的调查研究，成本和奖励和实际计算步骤成比例，被需要去验证交易和发布区块
+
+**注意 4** 描述的奖励函数，仅仅考虑一个实体成为输入背书者的次数，不考虑工作的数量，被应用去验证给定的交易。除外，不敏感的，是否一个位置领导者发布一个区块，在他分配的时间位置。我们下一个提供一些环境，在这些选择之后。首先假定位置领导者不会受到奖励，当他们不发布一个区块。容易看到当所有的参与方遵循这个协议，参与方将收到部分，从奖励池，和区块发布关联，大体上和他们的质押成比例。然而，一个恶意的联合能容易地增加奖励的比例，同执行一个区块扣缴税款攻击（在这个情况，这将相当于一个自私的挖矿攻击）。考虑到这发生，带有不可忽视的可能性，RV (E)的一个简单的定义，尊重这个安排是脆弱的去攻击，因此一个纳什均衡定理不能被展示。下一个，我们考虑扩展奖励函数的情况，因此输入背书者，被奖励，记忆他们验证的交易（与我们在上述定理考虑的平奖励相反）。特别的关怀是必要的去设计这个函数。实际上，简单的方式去实施他，如果第一个输入背书这去验证一个交易，是池子的一部分，制造一个更高的索取他的费用，然后，有一个策略，对于一个敌对方去偏离协议，改进奖励的比例：执行区块扣缴税款，和/或背书输入审查制度，去移除背书的输入，来自区块链，引起诚实的参与方。然后包含移除的交易，在背书的输入，将会被传输，在最后的可能的机会。如之前，考虑到攻击，定义RV (E)的自然的方式是对他易受影响的，因此一个纳什均衡定理不能被展示。
+
+去改在备注3中提出的问题的可能方向是，分享交易费，在所有输入背书它的输入背书者。这意味着如下对于协议的修改：不管何时，你是一个输入背书者，你应该尝试包含所有交易，你已经收集，对于一系列的k位置，转播你背书的输入，在它从主链中被移除的情况。我们留下奖励机制的这样的种类的分析作为未来的工作。
+
+**8 质押授权**
+
+如之前的章节所讨论的，利益相关者必须在线，为了生成区块，当他们被选择成为位置领导者。但是，者可能对于利益相关者是没有吸引力的，带有一个小的质押在系统里。此外，要求选举出的利益相关者的大多数参与掷硬币协议，对于更新随机性，介绍一个负担，在利益相关者和网络上，因为它可能需要广播和存储大量承诺和分享。
+
+We mitigate these issues by providing a method for reducing the size of the group of stakeholders
+that engage in the coin tossing protocol. Instead of the elected stakeholders directly forming
+the committee that will run coin tossing, a group of delegates will act on their behalf. In more
+detail, we put forth a delegation scheme, whereby stakeholders will authorize other entities, called
+delegates, who may be stakeholders themselves, to represent them in the coin tossing protocol. A
+delegate may participate in the protocol only if it represents a certain number of stakeholders whose
+aggregate stake exceeds a given threshold. Such a participation threshold ensures that a “fragmentation”
+attack, that aims to increase the delegate population in order to hurt the performance of
+the protocol, cannot incur a large penalty as it is capable to force the size of the committee that
+runs the protocol to be small (it is worth noting that the delegation mechanism is similar to mining
+pools in proof-of-work blockchain protocols).
+8.1 Minimum
 
 
 
