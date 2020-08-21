@@ -1076,15 +1076,39 @@ for 
 
 **双花攻击** 在双花攻击里，敌对方希望去恢复一个被网络确认的交易。攻击的目标是去发布一个交易。例如，从敌对方账户持有到受害人接收者的支付，有被确认的交易，然后恢复这个交易，通过，例如，包含一个账户一秒冲突交易。这样的交易不是可行的，在定理5.2的情况下。的确，持续确保一旦交易被诚实的选手确认，所有其他诚实的选手，来自那个点，将从来不同意，关于这个交易。因此，它将不可能去带有这个系统去一个状态，确认的交易是无效的（假定所有的定理的前提持有）。看下一个章节，对于实验的讨论，关于双花.
 
-**无休止的攻击** In stake grinding attacks, the adversary tries to influence the slot leader
-selection process to improve its chances of being selected to generate blocks (which can be used to
-perform other attacks such as double spending). Basically, when generating a block that is taken
-as input by the slot leader selection process, the adversary first tests several possible block headers
-and content in order to find the one that gives it the best chance of being selected as a slot leader
-again in the future. While this attack affects PoS based cryptocurrencies that collect randomness
-for the slot leader selection process from raw data in the blockchain itself (i.e. from block headers
-and content), our protocol uses a standard coin tossing protocol that is proven to generate unbiased
-uniform randomness as discussed in Section 5.2. We show that an adversary cannot influence the
-randomness generated in Figure 13, which is guaranteed to be uniformly random, thus guaranteeing
-that slot leaders are selected with probability proportional to their stake.
+**无休止的攻击** 在质押无休止攻击，敌对方试图影响位置领导者选择过程去提高他被选择去生成区块的机会（可以用来执行其他攻击，比如双花）。基本上，当生成一个区块，被位置领导选择过程作为输入，敌对方首先测试若干可能区块头和内容，为了找到一个，给它最好的机会在未来被选择成为位置领导者。当这个攻击基于PoS的加密货币，收集随机性，对于位置领导选择过程，来自区块链本身的原始数据（例如，另外子区块头和内容），我们的协议使用一个标准的掷硬币协议，被证明去生成一个无偏见的统一的不可测性，如在章节5.2中讨论的。我们显示，敌对方不能一项在图形13中形成的不可测性，被保证是一致的随机的，因此保证位领导者被选举，带有和他们质押成比例的的可能性。
+
+**交易拒绝攻击** 在一个交易拒绝攻击里，敌对方希望阻止特定的交易被确认。例如，敌对方可能想把一个特定的账户作为目标，阻止账户持有者去发布一个流出交易。这样一个攻击在定理5.2的情况下不是可行的。实际上，活跃性确保，假如交易被常识去插入，对于足够数量的位置，通过网络，它最终会被确认。
+
+**去同步化攻击** 在一个去同步化攻击力，利益相关者表现诚实的，但是然而不能正确的同步，带有网络的剩余部分。这导致区块的不合事宜的发布，并且离线，在这个期间，当利益相关者应该参与。这样的攻击可以被安装，通过阻止参与方访问一个时间服务器，或者其他机制，允许参与方之间同步。此外，一个去同步化可能也发生，由于极其长的延迟，在消息传递中，我们的模型允许参与方去成为去同步的，通过包含他们到敌对方力，没有活跃性和持久性的保证被提供，对于去同步化的参与方，因此，我们可以变得安全，只要参与方带有少于50%的质押变得去同步化。如果超过参与方变得去同步化，我们的协议能失败。更普遍的模型，像局部同步，有趣的去在PoS设计设置中考虑。
+
+**日食攻击** 在一个日食攻击，消息传递到利益相关被，被妨碍，由于一个破坏，在点对点的传递机制上。当在这个去同步化攻击的情况，我们的模型允许参与方去成为日食，通过包含他们到敌对方，被狗估计。没有活跃性和持续性的确认被提供给这样的参与方。
+
+**51%攻击** 一个51%攻击发生不管何时敌对方控制超过系统中质押的大多数。容易看到位置的任何序列，在这样的情况，带有非常高的分叉可能性，因此，一旦系统找到它自己，在这样的设置力，诚实的利益相关者可能被防止到不同的分叉力，对于长的时间期间。持续性和活跃两者能够被妨碍。
+
+**贿赂攻击** 在贿赂攻击，敌对方故意地支付矿工（通过加密货币或法币），去在特地的区块和分叉上工作，目标是生成任意的对敌对方有利的分叉（例如，通过支持一个双花攻击）。基于POW的加密货币的矿工不必须先拥有自己的质押，为了挖矿区块，这使得这个攻击策略可行。在这个设置力，如果敌对方提供一个高于正确地生成一个区块的奖励的贿赂，任何理性的矿工有一个清楚的动机去接受回落，并参与攻击，因为这增加了矿工的财务成过。但是，在我们基于PoS的协议，恶意的位置领导者，同意故意地攻击这个系统，不仅冒险去放弃任何他们的利益，他们能挣到的，从西瓜味诚实中，有可能冒险失去抵押资质的净值。注意位置领导者必须有投入到系统中的钱，为了能够生成区块，如果一个针对系统的攻击，被观察到，它可能使得货币价值下降。如果贿赂高于正确行为的奖励，货币贬值的损失能容易地抵消通过参与攻击获得的额外的利润。因此，贿赂攻击可能不那么有效，针对基于PoS的共识协议，相比基于POW的协议。当前，我们的合理性模型没有正式的包含这个攻击策略，调查它的效力，针对基于PoS的共识协议，被留作未来的工作
+
+Long-range attacks An attacker who wishes to double spend at a later point in time can mount
+a long-range attack [12] by computing a longer valid chain that starts right after the genesis block
+where it is the single stakeholder actively participating in the protocol. Even if this attacker
+owns a small fraction of the total stake, it can locally compute this chain generating only the
+blocks for slots where it is elected the slot leader and keep generating blocks ahead of current
+time until its alternative chain has more blocks than the main chain. Now, the attacker can post
+a transaction to the main chain, wait for it to be confirmed (and for goods to be delivered in
+exchange for the transaction) and present the longer alternative chain to invalidate its previously
+confirmed transaction. This attack is ineffective against Ouroboros for two reasons: Protocol DLS
+will only output valid leader selection data allowing for the protocol to continue if a majority of
+the stakeholders participate (or have delegates participate on their behalf) and stakeholders will
+reject blocks generated for slots that are far ahead of time. Since the alternative chain is generated
+artificially with blocks and protocol messages generated solely by an attacker who controls a small
+fraction of the stake the leader selection data needed to start new epochs will be considered invalid
+by other nodes. Even if the attacker could find a strategy to generate an alternative chain with
+valid leader selection data, presenting this chain and its blocks generated at slots that are far ahead
+of time would not result in a successful attack since those
+
+
+
+
+
+
 
