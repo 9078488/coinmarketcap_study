@@ -18,4 +18,7 @@
 ## 2. 关联币种
 
 - SKL（SKALE）
+  - We will announce our launch date and detailed plans by Wednesday, 8/26/2020
+
+
 
