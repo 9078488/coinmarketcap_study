@@ -1088,23 +1088,30 @@ for 
 
 **贿赂攻击** 在贿赂攻击，敌对方故意地支付矿工（通过加密货币或法币），去在特地的区块和分叉上工作，目标是生成任意的对敌对方有利的分叉（例如，通过支持一个双花攻击）。基于POW的加密货币的矿工不必须先拥有自己的质押，为了挖矿区块，这使得这个攻击策略可行。在这个设置力，如果敌对方提供一个高于正确地生成一个区块的奖励的贿赂，任何理性的矿工有一个清楚的动机去接受回落，并参与攻击，因为这增加了矿工的财务成过。但是，在我们基于PoS的协议，恶意的位置领导者，同意故意地攻击这个系统，不仅冒险去放弃任何他们的利益，他们能挣到的，从西瓜味诚实中，有可能冒险失去抵押资质的净值。注意位置领导者必须有投入到系统中的钱，为了能够生成区块，如果一个针对系统的攻击，被观察到，它可能使得货币价值下降。如果贿赂高于正确行为的奖励，货币贬值的损失能容易地抵消通过参与攻击获得的额外的利润。因此，贿赂攻击可能不那么有效，针对基于PoS的共识协议，相比基于POW的协议。当前，我们的合理性模型没有正式的包含这个攻击策略，调查它的效力，针对基于PoS的共识协议，被留作未来的工作
 
-Long-range attacks An attacker who wishes to double spend at a later point in time can mount
-a long-range attack [12] by computing a longer valid chain that starts right after the genesis block
-where it is the single stakeholder actively participating in the protocol. Even if this attacker
-owns a small fraction of the total stake, it can locally compute this chain generating only the
-blocks for slots where it is elected the slot leader and keep generating blocks ahead of current
-time until its alternative chain has more blocks than the main chain. Now, the attacker can post
-a transaction to the main chain, wait for it to be confirmed (and for goods to be delivered in
-exchange for the transaction) and present the longer alternative chain to invalidate its previously
-confirmed transaction. This attack is ineffective against Ouroboros for two reasons: Protocol DLS
-will only output valid leader selection data allowing for the protocol to continue if a majority of
-the stakeholders participate (or have delegates participate on their behalf) and stakeholders will
-reject blocks generated for slots that are far ahead of time. Since the alternative chain is generated
-artificially with blocks and protocol messages generated solely by an attacker who controls a small
-fraction of the stake the leader selection data needed to start new epochs will be considered invalid
-by other nodes. Even if the attacker could find a strategy to generate an alternative chain with
-valid leader selection data, presenting this chain and its blocks generated at slots that are far ahead
-of time would not result in a successful attack since those
+**远程攻击** 一个想双花的攻击者在时间后面的点后面，增加一个远程的攻击，通过计算更长的有效的链，在创世块后立马开始的，是单个利益相关者积极地参与进协议。即使这个攻击者拥有总质押的一小部分，它可以本地的计算这个链，生成仅仅对于位置的区块，它是被选择的位置领导者，保持生成区块，在当前时间之前，直到它的替代的链比主链有更多的区块。现在，攻击者可以发布一笔交易到主链，等待它被确认（对于在交易所运送的货物，对于交易），代表较长的替代链去使它之前确认的交易无效。这个攻击由于如下两个原因，针对Ouroboros是无效的：协议DLS仅仅输出有效的领导选择数据，允许协议去继续，如果利益相关者的大多数参与（或者有代表参与，代表他们的利益），利益相关者将拒绝为位置生成的区块，走在时代的签名。因为替代链人为地带有区块生成，协议效益单独地由攻击者生成，控制质押的一小部分，领导选择数据被需要去开始新的时间点，将被考虑无效，通过其他节点。即使攻击者可以找到一个策略去生成替代的链，带有有效的领导选择数据，代表这个链，在位置生成的区块，提前，将不会导致成功的攻击，因为这些区块提前将被诚实的利益相关者拒绝，最终的替代链将短于主链。
+
+**在质押上没有的攻击** “质押上没有东西”问题一般提及到针对PoS区块链系统的攻击，由利益相关者促进。继续同时地多重的区块链，开发事实，小的计算的努力，被需要去建立一个PoS区块链。如果利益相关者经常地在线，质押上没有东西由我们的分叉字符的分析照顾（即使敌对方依靠蛮力获得所有可能的策略去分叉进化的区块链，再不久的将来，没有可行的），我们的链的选择规则，指导选手去忽略非常深的分叉，偏离他们收到的区块，他们在线的最后一次，也不任何东西，违反基于POW的区块链，在我们的协议里，它是不可行的，去由一个分叉，由两个利益相关者正经地生成的。这是因为位置在被独特地分配，因此在任何给定的时刻，有单个的独特地被识别的利益相关者，被选举去法阵区块。遵循最长链规则的选手将采用最近刚完成的区块（除非敌对方在那时展示一个替代的区块链，使用较旧的区块）。在[13]被觉察的“公地悲剧”可能导致在一些基于Pos计划的利益相关者去用户攻击，因为他们没有权利去由他们自己阻止攻击，会遭受经济损失，即使他们不加入攻击。这将导致理性的利益相关者去接受贿赂，在一个替代的货币，可能至少获得一些经济收益。但是，在Ouroboros的激励结构里，位置领导者和背书者，可能参加攻击，将会收到奖励，在主要的和敌对的链。导致这些利益相关者不能通过参加攻击达成更高的利润。
+
+**过去的大多数攻击** 当质押移动我们的假设，是仅仅当前利益相关作者的大多数是诚实的。这意味着过去的账户密钥（现在可能不持有任何质押），可能被妥协。这导致潜在的弱点对于任何POS系统，因为一组来自过去的恶意的利益相关者建立一个替代的链，开发这样老的账户，事实是毫不费力的去建立这样的区块链。根据定理5.2，这样的攻击仅仅发生，针对利益相关者，不经常在线去观察系统的演化，或者在这个情况，质押转换高于定理的前提条件预料的。这可以被看做质押没有东西问题的特列，攻击者不再在系统里拥有任何质押，因此免于任何经济损失，当实施攻击。
+
+**自私的挖矿** In this type of attack, an attacker withholds blocks and releases them strategically
+attempting to drop honestly generated blocks from the main chain. In this way the attacker
+reduces chain growth and increases the relative ratio of adversarially generated blocks. In conventional
+reward schemes, as that of bitcoin, this has serious implications as it enables the attacker
+to obtain a higher rate of rewards compared to the rewards it would be receiving in case it was
+following the honest strategy. Using our reward mechanism however, selfish mining attacks are
+neutralized. The intuition behind this, is that input endorsers, who are the entities that receive
+rewards proportionally to their contributions, cannot be stifled because of block withholding: any
+input endorser can have its contribution accepted for a sufficiently long period of time after its
+endorsement took place, thus ensuring it will be incorporated into the blockchain (due to sufficient
+chain quality and chain growth). Given that input endorsers’ contributions are (approximately)
+proportional to their stake this ensures that reward distribution cannot be affected substantially
+by block withholding.
+10 Experimental
+
+
+
+
 
 
 
