@@ -1094,22 +1094,156 @@ for 
 
 **过去的大多数攻击** 当质押移动我们的假设，是仅仅当前利益相关作者的大多数是诚实的。这意味着过去的账户密钥（现在可能不持有任何质押），可能被妥协。这导致潜在的弱点对于任何POS系统，因为一组来自过去的恶意的利益相关者建立一个替代的链，开发这样老的账户，事实是毫不费力的去建立这样的区块链。根据定理5.2，这样的攻击仅仅发生，针对利益相关者，不经常在线去观察系统的演化，或者在这个情况，质押转换高于定理的前提条件预料的。这可以被看做质押没有东西问题的特列，攻击者不再在系统里拥有任何质押，因此免于任何经济损失，当实施攻击。
 
-**自私的挖矿** In this type of attack, an attacker withholds blocks and releases them strategically
-attempting to drop honestly generated blocks from the main chain. In this way the attacker
-reduces chain growth and increases the relative ratio of adversarially generated blocks. In conventional
-reward schemes, as that of bitcoin, this has serious implications as it enables the attacker
-to obtain a higher rate of rewards compared to the rewards it would be receiving in case it was
-following the honest strategy. Using our reward mechanism however, selfish mining attacks are
-neutralized. The intuition behind this, is that input endorsers, who are the entities that receive
-rewards proportionally to their contributions, cannot be stifled because of block withholding: any
-input endorser can have its contribution accepted for a sufficiently long period of time after its
-endorsement took place, thus ensuring it will be incorporated into the blockchain (due to sufficient
-chain quality and chain growth). Given that input endorsers’ contributions are (approximately)
-proportional to their stake this ensures that reward distribution cannot be affected substantially
-by block withholding.
-10 Experimental
+**自私的挖矿** 在这种类型的攻击里保留区块，并且战略性地释放他们，试图推动城市地生成的区块，从主链。在这个方式里，攻击者减少主链的主张，增加敌对地生成的区块的相关比例。在常见的奖励计划里，比如bitcoin的，有严重的可能的结果因为它使得攻击者可以获得奖励的更高的比率，相比他们遵循诚实策略所收到的奖励。适用我们的奖励机制，但是，自私的挖矿攻击被中立化。背后的直觉是，输入背书者，实体，收到的奖励和他们的贡献成比率，不能被藏匿，因为区块保留：任何输入背书这能有他的贡献，被接受作为充分地长的时间，在它的背书发生，因此，确保它将被包含进区块链（由于足够的链质量和链主张）。假定输入背书者的贡献是（近似地）和他们的质押成比率，这确保奖励分布不能被充分地影响，通过区块保留。
 
+**实验的结果**
 
+我们实施了一个Ouroboros的原型例示，在Haskell，和在基于Rust同等Ethereum客户，为了去评价具体的执行。更具体的说，我们实施了协议DPoS，使用协议DLS，去生成领导选择参数（例如，生成新鲜的随机性，对于加权的质押取样过程）。对于这个示例，我们使用PVSS计划,在椭圆曲线secp256r1实施。PVSS计划的共享验证信息包含一个承诺到这个秘密，也被用做在协议DLS中指定的承诺。这消除了需要，对于一个单独的承诺，去被生成和在区块链中储存。为了获得更高的效率，最后的协议DLS的输出a是一个32字节的一致的随机的二进制的字符串。这个字符串然后被用作PRG的种子（CHACHA 在我们的实施），延申到R随机标签，日志tbits,对于时间点上的每个位置。质押权重领导选择过程是然后被实施，通过使用随机的二进制字符串，关联到每个时间点去执行掷硬币序列，对于选择一个利益相关者。签名计划，用来全书区块是ECDSA,也在曲线secp256r1中实施。
+
+**10.1 在最佳的网络情况下的交易确认时间**
+
+我们首先检查需要用来去确认交易的时间，在一个设置里，网络不在大量的负担，并且交易被处理，当他们出现
+
+图形14： 交易确认时间，在几分钟内，完成保证99.9%，针对一个假设的双花攻击，带有不同的敌对力量的的水平，对于Bitcoin和Ouroboros（隐蔽的和一般的敌对方）
+
+在图形14，我们展示了一个比较，根据交易确认时间，在Bitcoin和Ouroboros之间，展示一个验证者需要等待多久去确信最好的可能的双花攻击成功，带有可能性小于0.1%，在Bitcoin的情况，我们考虑一个双花攻击者，名利一定比率的总哈希算例，希望恢复一笔交易。攻击者尝试双花，通过一个区块保持攻击，如在相同的论文中描述的（攻击者挖一个私有的分叉，发布它，当它足够长）。在Ouroboros的情况，我们考虑双花攻击者，尝试不理智的，迫使可能分叉的空间，对于当前位置领导分布，在一定的协议的部门，命令总质押的一定比例。我们开了隐蔽的和一般的敌对的设置，对于Ouroboros。
+
+在所有的情形中，我们衡量分钟的数量，一个需要等，为了完成双花可能性小于0.1%。在图形15，我们展示一个图表，形象地阐述加速。
+
+我们注意到，上述测量，比较我们Ouroboros实施和Bitcoin,在这个方式，两个系统是参数化的（带有10分钟区块生成率，对于Bitcoin,20秒位置，对于Ouroboros， 一个保守的参数选择）。开发替代的参数化，对于Bitcoin(例如使得POW更容易)，可以加速交易处理。然后，这不能被做，不仔细的衡量在总体安全上的影响。
+
+**10.2 Ouroboros的绝对的性能**
+
+我们实施Ouroboros作为一个基于Rust的Ethereum同等客户。随后，实验被用Amazon弹性计算云运行，‘c4.2xlarge实例，在‘us-east-1‘区域，带有一个小的跑步者实例，负责调节每个工人实例
+
+每个实验包含若干步骤：
+
+图形15:Ouroboros vs. Bitcoin,交易确认时间加速，针对一个假设的双花攻击者，对于保证水平99.9%。Ouroboros至少10~5被快，对于常规的敌对方，16~10倍对于秘密的敌对方。
+
+1. 每个工人实例建立一个情节的Docker镜像，包含一个特定的修订本，我们同等软件的分叉，包含Ouroboros概念证明改变，基于同等1.6.8发布。
+2. 每个工人实例在一个”绝缘的“模式里开始，没有节点相互交谈。在这个期间，一个Parity账户被恢复,在每个节点，对于网络的一个开始时间被建立。
+3. 每个工人实例被重启，在一个生产模式，允许节点相互交流，交易被挖矿
+4. 一个单个工人实例被通知关于所有的其他节点。所有的节点认识到所以其他节点，通过Parity的点对点发现方法。
+5. 每个工人实列有许多交易生成和吸收
+
+在每个实验，650,000总交易被生成，在参与节点之前，平等地共享质押。在任何给定的交易里传输的金额笑道最够去避免任何账户用完资金。每个实例生成所有的交易使用硬编码的共享的随机种子，然后保持交易发源于本地用户账户。20笔交易被存储进一个单个的JSON文件，准备好被直接地传到Parity RPC末端，使用curl命令行工具。在吸收期间，20笔交易的单个文件被吸收，一秒被花闲置的，在每个文件间，避免太多的请求压垮实例。
+
+各种设置被测试，集中在调整Ouroboros位置持续的时间和参与的节点的数量。10, 20, 30, 和 40节点被测试，最终由实例的数量限制，在单个EC2范围允许的。5, 10, 和 20 秒的位置持续期间也被测试。实验间的变化是小的。在图形16，我们展示40节点的情况，和5秒的位置长度，显示一个257.6笔交易每秒的中位数。
+
+图形16：衡量每秒交易数，在40节点，相等的质押部署带有5秒的位置长度。
+
+**11 感谢**
+
+我们感谢Ioannis Konstantinou，在我们协议的初步的版本的贡献。我们谢谢Lars Br¨unjes, Duncan Coutts, Kawin Worrasangasilpa对这个文章之前的草稿的意见。我们感谢Peter Gaˇzi，对于文章之前草稿的意见和协助我们去推广定理4.25到可行的分叉。我们谢谢George Agapov，对于我们协议在Haskell的原型实施，Goulding，对于基于Parity的实施。
+
+**参考文献**
+
+[1] Noga Alon and Joel Spencer. The Probabilistic Method. Wiley, 3rd edition, 2008.
+[2] Giuseppe Ateniese, Ilario Bonacina, Antonio Faonio, and Nicola Galesi. Proofs of space:
+When space is of the essence. In Michel Abdalla and Roberto De Prisco, editors, Security and
+Cryptography for Networks - 9th International Conference, SCN 2014, Amalfi, Italy, September
+3-5, 2014. Proceedings, volume 8642 of Lecture Notes in Computer Science, pages 538–557.
+Springer, 2014.
+[3] Yonatan Aumann and Yehuda Lindell. Security against covert adversaries: Efficient protocols
+for realistic adversaries. J. Cryptology, 23(2):281–343, 2010.
+[4] Iddo Bentov, Ariel Gabizon, and Alex Mizrahi. Cryptocurrencies without proof of work. CoRR,
+abs/1406.5694, 2014.
+
+[5] Iddo Bentov, Charles Lee, Alex Mizrahi, and Meni Rosenfeld. Proof of activity: Extending
+bitcoin’s proof of work via proof of stake [extended abstract]y. SIGMETRICS Performance
+Evaluation Review, 42(3):34–37, 2014.
+[6] Iddo Bentov, Rafael Pass, and Elaine Shi. The sleepy model of consensus. IACR Cryptology
+ePrint Archive, 2016:918, 2016.
+[7] Iddo Bentov, Rafael Pass, and Elaine Shi. Snow white: Provably secure proofs of stake. IACR
+Cryptology ePrint Archive, 2016:919, 2016.
+[8] Daniel J. Bernstein. Chacha, a variant of salsa20. In SASC: The State of the Art of Stream
+Ciphers., 2008.
+[9] Manuel Blum. Coin flipping by telephone. In Allen Gersho, editor, Advances in Cryptology: A
+Report on CRYPTO 81, CRYPTO 81, IEEE Workshop on Communications Security, Santa
+Barbara, California, USA, August 24-26, 1981., pages 11–15. U. C. Santa Barbara, Dept. of
+Elec. and Computer Eng., ECE Report No 82-04, 1981.
+[10] Alexandra Boldyreva, Adriana Palacio, and BogdanWarinschi. Secure proxy signature schemes
+for delegation of signing rights. J. Cryptology, 25(1):57–115, 2012.
+[11] Joseph Bonneau. Why buy when you can rent? - bribery attacks on bitcoin-style consensus.
+In Jeremy Clark, Sarah Meiklejohn, Peter Y. A. Ryan, Dan S. Wallach, Michael Brenner,
+and Kurt Rohloff, editors, Financial Cryptography and Data Security - FC 2016 International
+Workshops, BITCOIN, VOTING, and WAHC, Christ Church, Barbados, February 26, 2016,
+Revised Selected Papers, volume 9604 of Lecture Notes in Computer Science, pages 19–26.
+Springer, 2016.
+[12] Vitalik Buterin. Long-range attacks: The serious problem with adaptive proof of
+work. https://blog.ethereum.org/2014/05/15/long-range-attacks-the-serious-problem-withadaptive-
+proof-of-work/, 2014.
+[13] Vitalik Buterin. Proof of stake faq. https://github.com/ethereum/wiki/wiki/Proof-of-Stake-
+FAQ, 2016.
+[14] Ran Canetti. Universally composable signature, certification, and authentication. In 17th
+IEEE Computer Security Foundations Workshop, (CSFW-17 2004), 28-30 June 2004, Pacific
+Grove, CA, USA, page 219. IEEE Computer Society, 2004.
+[15] David Chaum. Untraceable electronic mail, return addresses, and digital pseudonyms. Commun.
+ACM, 24(2):84–88, 1981.
+[16] David Chaum. The dining cryptographers problem: Unconditional sender and recipient untraceability.
+J. Cryptology, 1(1):65–75, 1988.
+[17] George Danezis and Sarah Meiklejohn. Centrally banked cryptocurrencies. In 23nd Annual
+Network and Distributed System Security Symposium, NDSS 2016, San Diego, California,
+USA, February 21-24, 2016. The Internet Society, 2016.
+[18] Bernardo Machado David, Peter Gazi, Aggelos Kiayias, and Alexander Russell. Ouroboros
+praos: An adaptively-secure, semi-synchronous proof-of-stake protocol. IACR Cryptology
+ePrint Archive, 2017:573, 2017.
+
+[19] Cynthia Dwork, Nancy A. Lynch, and Larry J. Stockmeyer. Consensus in the presence of
+partial synchrony. J. ACM, 35(2):288–323, 1988.
+[20] Stefan Dziembowski, Sebastian Faust, Vladimir Kolmogorov, and Krzysztof Pietrzak. Proofs of
+space. In Rosario Gennaro and Matthew Robshaw, editors, Advances in Cryptology - CRYPTO
+2015 - 35th Annual Cryptology Conference, Santa Barbara, CA, USA, August 16-20, 2015, Proceedings,
+Part II, volume 9216 of Lecture Notes in Computer Science, pages 585–605. Springer,
+2015.
+[21] Ittay Eyal and Emin Gun Sirer. Majority is not enough: Bitcoin mining is vulnerable. In Angelos
+D. Keromytis, editor, Financial Cryptography, volume 7397 of Lecture Notes in Computer
+Science. Springer, 2014.
+[22] Paul Feldman. A practical scheme for non-interactive verifiable secret sharing. In 28th Annual
+Symposium on Foundations of Computer Science, Los Angeles, California, USA, 27-29 October
+1987, pages 427–437. IEEE Computer Society, 1987.
+[23] Bryan Ford. Delegative democracy. http://www.brynosaurus.com/deleg/deleg.pdf, 2002.
+[24] Juan A. Garay, Aggelos Kiayias, and Nikos Leonardos. The bitcoin backbone protocol: Analysis
+and applications. In Elisabeth Oswald and Marc Fischlin, editors, Advances in Cryptology
+- EUROCRYPT 2015 - 34th Annual International Conference on the Theory and Applications
+  of Cryptographic Techniques, Sofia, Bulgaria, April 26-30, 2015, Proceedings, Part II, volume
+  9057 of Lecture Notes in Computer Science, pages 281–310. Springer, 2015.
+  [25] Charles M Grinstead and J Laurie Snell. Introduction to Probability. American Mathematical
+  Society, 2nd edition, 1997.
+  [26] Aggelos Kiayias and Giorgos Panagiotakos. Speed-security tradeoffs in blockchain protocols.
+  Cryptology ePrint Archive, Report 2015/1019, 2015. http://eprint.iacr.org/2015/1019.
+  [27] Silvio Micali. ALGORAND: the efficient and democratic ledger. CoRR, abs/1607.01341, 2016.
+  [28] Tal Moran and Ilan Orlov. Proofs of space-time and rational proofs of storage. Cryptology
+  ePrint Archive, Report 2016/035, 2016. http://eprint.iacr.org/2016/035.
+  [29] Rajeev Motwani and Prabhakar Raghavan. Randomized Algorithms. Cambridge University
+  Press, New York, NY, USA, 1995.
+  [30] Satoshi Nakamoto. Bitcoin: A peer-to-peer electronic cash system.
+  http://bitcoin.org/bitcoin.pdf, 2008.
+  [31] Noam Nisan, Tim Roughgarden, Eva Tardos, and Vijay V. Vazirani. Algorithmic Game Theory.
+  Cambridge University Press, New York, NY, USA, 2007.
+  [32] Karl J. O’Dwyer and David Malone. Bitcoin mining and its energy footprint. ISSC 2014 /
+  CIICT 2014, Limerick, June 26–27, 2014.
+  [33] Sunoo Park, Krzysztof Pietrzak, Albert Kwon, Jo¨el Alwen, Georg Fuchsbauer, and Peter Gazi.
+  Spacemint: A cryptocurrency based on proofs of space. IACR Cryptology ePrint Archive,
+  2015:528, 2015.
+  [34] Rafael Pass. Cryptography and game theory. Securty and Cryptography for Networks, 2016,
+  invited talk., 2016.
+
+  [35] Rafael Pass, Lior Seeman, and Abhi Shelat. Analysis of the blockchain protocol in asynchronous
+  networks. IACR Cryptology ePrint Archive, 2016:454, 2016.
+  [36] Rafael Pass and Elaine Shi. Fruitchains: A fair blockchain. IACR Cryptology ePrint Archive,
+  2016:916, 2016.
+  [37] Alexander Russell, Cristopher Moore, Aggelos Kiayias, and Saad Quader. Forkable strings are
+  rare. Cryptology ePrint Archive, Report 2017/241, March 2017. http://eprint.iacr.org/
+  2017/241.
+  [38] Ayelet Sapirshtein, Yonatan Sompolinsky, and Aviv Zohar. Optimal selfish mining strategies
+  in bitcoin. CoRR, abs/1507.06183, 2015.
+  [39] Berry Schoenmakers. A simple publicly verifiable secret sharing scheme and its application
+  to electronic voting. In Michael J. Wiener, editor, Advances in Cryptology - CRYPTO ’99,
+  19th Annual International Cryptology Conference, Santa Barbara, California, USA, August
+  15-19, 1999, Proceedings, volume 1666 of Lecture Notes in Computer Science, pages 148–164.
+  Springer, 1999.
+  
 
 
 

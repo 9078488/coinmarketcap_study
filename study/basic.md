@@ -23,15 +23,37 @@ https://freevpnforwindows.net/
 
 用 **GO谷歌安装器**
 
+# 三、 Telegram
+
+已注册
+
+# 四、 Metamask
+
+## 1. 官网
+
+https://metamask.io/
+
+## 2. 安装Chrome插件
+
+官网直接安装
+
+## 3. 注册账户
+
+注册了一个，并保存了助记词
+
+## 4. 绑定原有ETH私钥
+
+## 5. 体验连接一些DEX
+
+## 6. 下载ANDROID钱包
 
 
 
 
 
 
-telegram
 
 uniswap
 
-metamask
+
 
