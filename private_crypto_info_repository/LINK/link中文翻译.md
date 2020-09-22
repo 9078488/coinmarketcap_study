@@ -123,6 +123,30 @@ Chainlin的核心的功能的目标是去两种环境之间架桥：链上和链
 
 ChainLink现在操作带有一个计划系统，基于JSON模式，去指定每个适配器需要的输入，他们如何应该被格式化。类似地，适配器指定一个输出模式去描述每个子任务输出的格式。
 
+**3 Oracle安全**
+
+为了解释ChainLink的安全架构，我们必须首先解释为什么安全重要
+
+**中间翻译好没保存**
+
+**4 ChainLink去中心化方式**
+
+我们提出三个基本的补充的方式去确认针对错误的节点：（1）数据源的分布 （2）oracle的分布 和 (3) 可信任硬件的使用。我们讨论前两个方式，包含去中心化，在这个章节。我们讨论我们长期的策略，对于可信任的硬件，一个不同的补足的方式，在章节6.
+
+**4.1 分散的源头 **
+
+一个简单吃力错误的单个源头Src的方式是从多个源头获取数据，例如，分三的数据源。一个可信任的ORACLE能够查询源头Src1; Src2; : : : ; Srck的聚集，获得回复a1; a2; : : : ; ak，集合他们到一个单个的答复A = agg(a1; a2; : : : ; ak)，ORACLE可能做这个，在若干方式的一些。一个，例如，是大多数投票。如果源头的大多数返回完全的值a,函数agg返回a;否则它返回一个错误。在这种情况，假设大多数(> k=2)源头正确的运行，ORACLE将总是返回一个正确的值A.
+
+许多替代的函数agg能够确保健壮性，针对错误的数据或者处理数据值随着时间波动（例如，股票价格）。例如，agg可能丢弃异常值（例如，最大的和最小的值ai）,输出剩余的平均值。
+
+当然，错误可能相关联，在数据源之间，以一个方式，变弱由集合提供的保证，如果网站Src1 = EchoEcho.com从Src2 = TheHorsesMouth.com处获得数据，一个在Src2中的错误将总是意味着在Src1中的一个数据。大多数微妙的相关，在数据源之间，也可能发生。ChainLink也提出去追求研究映射和报告数据源的独立性，在一个容易的易消化的方式，所以oracle和用户能避免不希望得到的相关。
+
+**4.2  分散的oracle**
+
+Just as sources can be distributed, our ideal service ORACLE itself can be approximated
+as a distributed system. This is to say that instead of a single monolithic oracle
+node O, we can instead have a collection of n different oracle nodes fO1;O2; : : : ;On
+
 
 
 

@@ -49,11 +49,29 @@ https://metamask.io/
 
 
 
+# 五、 交易所注册
+
+## 1. gate.io
+
+已注册
+
+m
+
+# 六、 公链钱包
+
+# 1. Tron
+
+## (1) TronLink
+
+- 安装安卓版
+- 安装chrome版
 
 
 
 
-uniswap
+
+walletconnect  mykey meetone tp imtoken
 
 
 
+、、，m
