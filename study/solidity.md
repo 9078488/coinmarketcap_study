@@ -1,6 +1,6 @@
 # 一、 资源
 
-## (1) 官方资源
+## 1. 官方资源
 
 https://studio.ethereum.org/
 
@@ -15,6 +15,26 @@ https://ethereum.org/en/developers/#frontend-javascript-apis
 https://ethereum.org/en/developers/#standards
 
 https://github.com/ethereum/web3.js/   //WEBJS3
+
+https://remix-ethdoc-plugin.readthedocs.io/en/latest/
+
+## 2. 测试网
+
+### (1) Ropsten
+
+https://faucet.ropsten.be/
+
+https://ropsten.etherscan.io/
+
+### (2) Koven
+
+https://kovan-testnet.github.io/
+
+https://kovan.etherscan.io/
+
+### (2) Rinkeby
+
+获取不了测试币
 
 # 二、 学习记录
 
@@ -40,11 +60,26 @@ https://cryptozombies.io/en/lesson/6/chapter/4
 
 ## 3. https://solidity.readthedocs.io/en/latest/index.html
 
-https://solidity.readthedocs.io/en/latest/solidity-by-example.html#blind-auction
+https://solidity.readthedocs.io/en/latest/solidity-by-example.html
+
+example草草过了一遍，后续再重读
+
+
+
+https://solidity.readthedocs.io/en/latest/structure-of-a-contract.html
+
+
+
+Function modifiers can be used to amend the semantics of functions in a declarative way (see
 
 ```
-// A dynamically-sized array of `Proposal` structs.
-    Proposal[] public proposals;
+        for (uint i = 0; i < proposalNames.length; i++) {
+            // `Proposal({...})` creates a temporary
+            // Proposal object and `proposals.push(...)`
+            // appends it to the end of `proposals`.
+            proposals.push(Proposal({
+                name: proposalNames[i],
+                voteCount: 0
 ```
 
 # 三、 语法
